@@ -15,6 +15,12 @@ class CreateTokensTable extends Migration
     {
         Schema::create('tokens', function (Blueprint $table) {
             $table->id();
+            $table->string('token', 255);
+            $table->string('type');
+            $table->unsignedBigInteger('users_id');
+            $table->boolean('status');
+            $table->timestamp('expired_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

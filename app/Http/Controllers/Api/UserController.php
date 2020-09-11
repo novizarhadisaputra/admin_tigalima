@@ -39,7 +39,7 @@ class UserController extends Controller
             }
         }
         $user->update($request->all());
-        return response()->json(['message' => 'User updated', 'user' => $user], 200);
+        return response()->json(['message' => 'User updated', 'data' => $user], 200);
     }
 
     public function destroy(User $user)

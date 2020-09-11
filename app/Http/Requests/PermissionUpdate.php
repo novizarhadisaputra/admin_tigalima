@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class VerificationMailStore extends FormRequest
+class PermissionUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,15 +26,15 @@ class VerificationMailStore extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'name' => 'required|unique:permissions',
         ];
     }
 
     public function messages()
     {
         return [
-            'email.required' => 'A email is required',
-            'email.email' => 'A email must be valid',
+            'name.required' => 'A name is required',
+            'name.unique' => 'A name must be unique',
         ];
     }
 

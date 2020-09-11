@@ -35327,6 +35327,10 @@ __webpack_require__.r(__webpack_exports__);
     path: '/dashboard',
     name: '',
     component: _pages_Dashboard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    path: '/verification',
+    name: '',
+    component: _pages_Dashboard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }]
 });
 

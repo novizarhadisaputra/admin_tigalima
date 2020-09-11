@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Events\UserRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthStore;
+use App\Http\Requests\TokenVerified;
 use App\Http\Requests\VerificationMailStore;
+use App\Models\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -31,11 +33,19 @@ class AuthController extends Controller
 
     public function resendVerification(VerificationMailStore $request)
     {
-        return event(new UserRegistered($request->input()));
+        try {
+            event(new UserRegistered($request->input()));
+            return \response()->json(['message' => 'Email sent, please check your email'], 200);
+        } catch (\Throwable $th) {
+            return \response()->json(['errors' => $th->getMessage()], 400);
+        }
     }
 
-    public function userVerification($request)
+    public function userVerification(TokenVerified $request)
     {
-
+        // if (!checkToken($request->token)) {
+        //     response()->json(['errors' => 'Token is unvalid'], 400);
+        // }
+        // response()->json(['message' => 'Verification successfully'], 200);
     }
 }

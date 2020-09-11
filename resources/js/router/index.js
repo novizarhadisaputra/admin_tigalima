@@ -19,6 +19,11 @@ export default {
 			path: '/dashboard',
 			name: '',
 			component: Dashboard
-		}
+        },
+        {
+			path: '/verification',
+			name: '',
+			component: Dashboard
+        }
 	]
 };
